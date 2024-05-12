@@ -1,0 +1,23 @@
+name: Build and test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout the repository
+      uses: actions/checkout@v4
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: install dependancies
+      run: npm install
+    - name: run integration tests
+      run: npm test
