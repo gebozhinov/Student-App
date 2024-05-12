@@ -24,7 +24,7 @@ jobs:
     - name: Install dependancies
       run: npm install
     - name: Run integration tests
-      run: npm test-integration
+      run: npm run test-integration
 
   test-security:
     runs-on: ubuntu-latest
@@ -42,4 +42,4 @@ jobs:
     - name: Install dependancies
       run: npm install
     - name: Run security tests
-      run: npm test-security
+      run: npm run test-security
