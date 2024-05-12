@@ -9,15 +9,18 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
     steps:
-    - name: checkout the repository
+    - name: Checkout the repository
       uses: actions/checkout@v4
-    - name: Use Node.js 18
+    - name: Use Node.js ${{matrix.node-version}}
       uses: actions/setup-node@v3
       with:
-        node-version: 18.x
+        node-version: ${{matrix.node-version}}
         cache: 'npm'
-    - name: install dependancies
+    - name: Install dependancies
       run: npm install
-    - name: run integration tests
+    - name: Run integration tests
       run: npm test
